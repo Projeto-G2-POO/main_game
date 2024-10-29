@@ -55,6 +55,7 @@ colors = {
 end_game = False
 points = 0
 ball_move = [1, -1]
+vel = 55
 
 def draw_in_screen():
     screen.fill(colors['black'])
@@ -66,11 +67,11 @@ def player_move(event):
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_d:
             if (player.x + player_size) < screen_size[0]:
-                player.x = player.x + 55
+                player.x = player.x + vel
             
         if event.key == pygame.K_a:
             if player.x > 0:
-                player.x = player.x - 55
+                player.x = player.x - vel
 
 
 def ball_moviment(ball):
