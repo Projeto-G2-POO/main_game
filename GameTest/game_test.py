@@ -12,8 +12,8 @@ def draw_screen():
 def move_player():
     keys = pygame.key.get_pressed()
     
-    player.x += (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * p1.veloc
-    player.y += (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * p1.veloc
+    player.x += (keys[pygame.K_d] - keys[pygame.K_a]) * p1.veloc
+    player.y += (keys[pygame.K_s] - keys[pygame.K_w]) * p1.veloc
 
     player.centerx = player.centerx % screen.get_width()
     player.centery = player.centery % screen.get_height()
@@ -46,8 +46,6 @@ while run_game:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run_game = False
-        if event.type == pygame.KEYDOWN:
-            print(pygame.key.name(event.key))
     
     move_player()
     pygame.time.wait(1)
