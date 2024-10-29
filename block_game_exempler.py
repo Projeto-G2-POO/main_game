@@ -7,7 +7,7 @@ screen_size: tuple = (800, 800)
 screen = pygame.display.set_mode(screen_size)
 
 # nome jogo
-pygame.display.set_caption('Game Test Alpha')
+pygame.display.set_caption('Block Game')
 
 ball_size = 15
 player_size = 100
@@ -21,7 +21,6 @@ player = pygame.Rect(0, 750, player_size, 15)
 
 def create_blocks(blocks_line, lines_blocks):
     width_screen = screen_size[0]
-    height_screen = screen_size[1]
     
     blocks_spaces = 5
     
