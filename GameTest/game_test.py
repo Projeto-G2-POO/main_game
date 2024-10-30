@@ -48,7 +48,6 @@ def change_player_sprite():
             p1.sprite_path('.\GameTest\sprites\player_sprite.png')
         
 
-
 # CONFIG SCREEN ON GAME
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
