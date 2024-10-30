@@ -18,6 +18,13 @@ def move_player():
     player.centerx = player.centerx % screen.get_width()
     player.centery = player.centery % screen.get_height()
     
+    if player.x < 0:
+        player.x = 0
+    
+    # por algum motivo essa merda ta bugada
+    if player.x > screen_size[0]:
+        player.x = screen_size[0]
+    
 
 colors = {
     'white': (255, 255, 255),
