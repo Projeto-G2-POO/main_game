@@ -4,11 +4,13 @@ from color import Color
 
 pygame.init()
 
+# DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
     screen.fill(Color.black())
     pygame.draw.rect(screen, p1.color, player)
 
 
+# CONFIG PLAYER MOVIMENT BTN AND MOVE SET
 def move_player():
     keys = pygame.key.get_pressed()
     
@@ -35,17 +37,22 @@ def sprite_validad():
     screen.blit(player_sprite, (0, 0))
 
 
+# CONFIG SCREEN ON GAME
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
 
+
+# GAME NAME IN SCREEN
 pygame.display.set_caption('Game Test Alpha')
 
+
+# PLAYER OBJECT SETS
 p1 = Player([50, 50], [200, 200], Color.red(), 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
-# NAO SEI PQ MAS O DIRETORIO TA DANDO ERRO
-# TA CERTO BIBLIOTECA BURRA DO KRL
-player_sprite = pygame.image.load('player_sprite.png').convert_alpha()
+
+# PLAYER SPRITE CONFIG
+player_sprite = pygame.image.load('.\GameTest\player_sprite.png').convert_alpha()
 player_sprite = pygame.transform.scale(player_sprite, (p1.size[0], p1.size[1]))
 
 run_game = True
@@ -60,6 +67,8 @@ while run_game:
             run_game = False
     
     move_player()
+    sprite_validad()
+    
     pygame.time.wait(1)
     pygame.display.flip()
     
