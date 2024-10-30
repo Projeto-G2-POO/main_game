@@ -7,7 +7,6 @@ pygame.init()
 # DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
     screen.fill(Color(0, 140, 0).rgb)
-    pygame.draw.rect(screen, p1.color, player)
 
 
 # CONFIG PLAYER MOVIMENT BTN AND MOVE SET
@@ -47,7 +46,7 @@ pygame.display.set_caption('Game Test Alpha')
 
 
 # PLAYER OBJECT SETS
-p1 = Player([34, 44], [200, 200], Color.black(), 5)
+p1 = Player([34, 44], [200, 200], 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 
