@@ -1,12 +1,12 @@
 import pygame
-import player
-import color
+from player import Player
+from color import Color
 
 pygame.init()
 
 def draw_screen():
-    screen.fill(color.Color(0, 0, 0).rgb)
-    pygame.draw.rect(screen, p1.color.rgb, player)
+    screen.fill(Color.black())
+    pygame.draw.rect(screen, p1.color, player)
 
 
 def move_player():
@@ -21,25 +21,16 @@ def move_player():
     if player.x < 0:
         player.x = 0
     
-    # por algum motivo essa merda ta bugada
-    if player.x > screen_size[0]:
-        player.x = screen_size[0]
+    if player.x + p1.size[0] > screen_size[0]:
+        player.x = screen_size[0] - p1.size[0]
     
-
-colors = {
-    'white': (255, 255, 255),
-    'black': (0, 0, 0),
-    'red': (255, 0, 0),
-    'green': (0, 255, 0),
-    'blue': (0, 0, 255)
-}
-
+    
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
 
 pygame.display.set_caption('Game Test Alpha')
 
-p1 = player.Player([20, 20], [15, 15], color.Color(255, 0, 0), 5)
+p1 = Player([25, 25], [15, 15], Color.red(), 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 run_game = True
