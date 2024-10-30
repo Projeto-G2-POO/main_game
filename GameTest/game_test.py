@@ -24,13 +24,19 @@ def move_player():
     if player.x + p1.size[0] > screen_size[0]:
         player.x = screen_size[0] - p1.size[0]
     
+    if player.y < 0:
+        player.y = 0
+    
+    if player.y + p1.size[1] > screen_size[1]:
+        player.y = screen_size[1] - p1.size[1]
+    
     
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
 
 pygame.display.set_caption('Game Test Alpha')
 
-p1 = Player([25, 25], [15, 15], Color.red(), 5)
+p1 = Player([50, 50], [200, 200], Color.red(), 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 run_game = True
