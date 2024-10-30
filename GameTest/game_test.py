@@ -30,7 +30,11 @@ def move_player():
     if player.y + p1.size[1] > screen_size[1]:
         player.y = screen_size[1] - p1.size[1]
     
-    
+
+def sprite_validad():
+    screen.blit(player_sprite, (0, 0))
+
+
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
 
@@ -39,8 +43,12 @@ pygame.display.set_caption('Game Test Alpha')
 p1 = Player([50, 50], [200, 200], Color.red(), 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
-run_game = True
+# NAO SEI PQ MAS O DIRETORIO TA DANDO ERRO
+# TA CERTO BIBLIOTECA BURRA DO KRL
+player_sprite = pygame.image.load('player_sprite.png').convert_alpha()
+player_sprite = pygame.transform.scale(player_sprite, (p1.size[0], p1.size[1]))
 
+run_game = True
 clock = pygame.time.Clock()
 
 while run_game:
