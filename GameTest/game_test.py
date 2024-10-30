@@ -6,7 +6,7 @@ pygame.init()
 
 # DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
-    screen.fill(Color.black())
+    screen.fill(Color(0, 140, 0).rgb)
     pygame.draw.rect(screen, p1.color, player)
 
 
@@ -34,7 +34,7 @@ def move_player():
     
 
 def sprite_validad():
-    screen.blit(player_sprite, (0, 0))
+    screen.blit(p1.get_sprite(), player)
 
 
 # CONFIG SCREEN ON GAME
@@ -52,9 +52,11 @@ player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 
 # PLAYER SPRITE CONFIG
-player_sprite = pygame.image.load('.\GameTest\player_sprite.png').convert_alpha()
-player_sprite = pygame.transform.scale(player_sprite, (p1.size[0], p1.size[1]))
+p1.set_sprite('.\GameTest\sprites\player_sprite.png')
+player = p1.get_sprite().get_rect()
 
+
+# GAME IMPORT VARIAVELS
 run_game = True
 clock = pygame.time.Clock()
 
@@ -66,8 +68,8 @@ while run_game:
         if event.type == pygame.QUIT:
             run_game = False
     
-    move_player()
     sprite_validad()
+    move_player()
     
     pygame.time.wait(1)
     pygame.display.flip()
