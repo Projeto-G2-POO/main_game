@@ -47,7 +47,7 @@ pygame.display.set_caption('Game Test Alpha')
 
 
 # PLAYER OBJECT SETS
-p1 = Player([50, 50], [200, 200], Color.red(), 5)
+p1 = Player([34, 44], [200, 200], Color.red(), 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 

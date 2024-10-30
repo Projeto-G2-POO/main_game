@@ -7,9 +7,11 @@ class Player:
         self.color = color
         self.veloc = veloc
         
+        
     def set_sprite(self, path):
         self.sprite  = pygame.image.load(path).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite, (self.size[0], self.size[1]))
+        
         
     def get_sprite(self):
         return self.sprite
