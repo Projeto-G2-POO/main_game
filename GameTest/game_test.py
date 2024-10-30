@@ -7,6 +7,7 @@ pygame.init()
 # DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
     screen.fill(Color(0, 140, 0).rgb)
+    screen.blit(p1.get_sprite(), player)
 
 
 # CONFIG PLAYER MOVIMENT BTN AND MOVE SET
@@ -32,8 +33,20 @@ def move_player():
         player.y = screen_size[1] - p1.size[1]
     
 
-def sprite_validad():
-    screen.blit(p1.get_sprite(), player)
+def change_player_sprite(): 
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_a:
+            p1.sprite_path('.\GameTest\sprites\player_sprite_left.png')
+            
+        if event.key == pygame.K_d:
+            p1.sprite_path('.\GameTest\sprites\player_sprite_right.png')
+            
+        if event.key == pygame.K_w:
+            p1.sprite_path('.\GameTest\sprites\player_sprite_up.png')
+        
+        if event.key == pygame.K_s:
+            p1.sprite_path('.\GameTest\sprites\player_sprite.png')
+        
 
 
 # CONFIG SCREEN ON GAME
@@ -46,7 +59,7 @@ pygame.display.set_caption('Game Test Alpha')
 
 
 # PLAYER OBJECT SETS
-p1 = Player([34, 44], [200, 200], 5)
+p1 = Player([44, 54], [200, 200], 5)
 player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
 
 
@@ -67,7 +80,8 @@ while run_game:
         if event.type == pygame.QUIT:
             run_game = False
     
-    sprite_validad()
+        change_player_sprite()
+    
     move_player()
     
     pygame.time.wait(1)
