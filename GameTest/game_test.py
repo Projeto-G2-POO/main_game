@@ -9,32 +9,24 @@ pygame.init()
 def draw_screen():
     screen.fill(Color(0, 140, 0).rgb)
     
-    screen.blit(p1.get_sprite(), player)
-    screen.blit(g1.get_sprite(), goblin)
+    screen.blit(p1.get_sprite(), p1.rect)
+    screen.blit(g1.get_sprite(), g1.rect)
     
     
 # CONFIG SCREEN ON GAME
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
-
-
-# GAME NAME IN SCREEN
 pygame.display.set_caption('Game Test Alpha')
 
-
-# PLAYER OBJECT SETS
+# PLAYER OBJECT SET
 p1 = Player([44, 54], [400, 400], 5)
-player = pygame.Rect(p1.location[0], p1.location[1] , p1.size[0], p1.size[1])
-player = p1.get_sprite().get_rect()
 
+# PLAYER LOCATION SET IN X AND Y
+p1.rect.x = p1.location[0]
+p1.rect.y = p1.location[1]
 
-player.x = p1.location[0]
-player.y = p1.location[1]
-
-
+# GOBLIN OBJECT SET
 g1 = Goblin([44, 54], [400, 800], 2, 5)
-goblin = pygame.Rect(g1.location[0], g1.location[1], g1.size[0], g1.size[1])
-goblin = g1.get_sprite().get_rect()
 
 # GAME IMPORT VARIAVELS
 run_game = True
@@ -50,8 +42,8 @@ while run_game:
     
         p1.change_player_sprite(event)
     
-    g1.chase_player(player, goblin)
-    p1.move_player(screen, screen_size, player)
+    g1.chase_player(p1.rect, g1.rect)
+    p1.move_player(screen, screen_size, p1.rect)
     
     pygame.time.wait(1)
     pygame.display.flip()
