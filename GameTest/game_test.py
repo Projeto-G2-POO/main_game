@@ -3,6 +3,18 @@ from player import Player
 from color import Color
 from goblin import Goblin
 
+'''
+
+COISAS PARA FAZER:
+
+    1 - BACKGROUND (MICHAS FALOU Q VAI FAZER)
+    2 - SISTEMA DE DIALOGO
+    3 - IA PARA OS PERSONAGENS
+    4 - SISTEMA DE INVENTARIO
+    5 - SISTEMA DE LUTA
+    
+'''
+
 pygame.init()
 
 # DRAW OBJECTS SPRITES ETC IN SCREEN
