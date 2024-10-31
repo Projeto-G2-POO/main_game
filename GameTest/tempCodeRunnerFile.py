@@ -1,1 +1,0 @@
-player = p1.get_sprite().get_rect()
