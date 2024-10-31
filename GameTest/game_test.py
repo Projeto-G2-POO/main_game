@@ -21,10 +21,6 @@ pygame.display.set_caption('Game Test Alpha')
 # PLAYER OBJECT SET
 p1 = Player([44, 54], [400, 400], 5)
 
-# PLAYER LOCATION SET IN X AND Y
-p1.rect.x = p1.location[0]
-p1.rect.y = p1.location[1]
-
 # GOBLIN OBJECT SET
 g1 = Goblin([44, 54], [400, 800], 2, 5)
 
@@ -32,6 +28,7 @@ g1 = Goblin([44, 54], [400, 800], 2, 5)
 run_game = True
 clock = pygame.time.Clock()
 
+# WHILE MAKE GAME RUN
 while run_game:
     draw_screen()
     clock.tick(60)
