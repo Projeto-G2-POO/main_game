@@ -51,3 +51,6 @@ class Player(Creature):
         
         if player.y + self.size[1] > screen_size[1]:
             player.y = screen_size[1] - self.size[1]
+
+        if player.y > 704:
+            player.y = 704

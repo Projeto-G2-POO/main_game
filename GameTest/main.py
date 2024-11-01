@@ -8,11 +8,10 @@ from dialogue_box import DialogueBox
 
 COISAS PARA FAZER:
 
-    1 - BACKGROUND (MICHAS FALOU Q VAI FAZER)
-    2 - SISTEMA DE DIALOGO
-    3 - IA PARA OS PERSONAGENS
-    4 - SISTEMA DE INVENTARIO
-    5 - SISTEMA DE LUTA
+    - SISTEMA DE DIALOGO
+    - IA PARA OS PERSONAGENS
+    - SISTEMA DE INVENTARIO
+    - SISTEMA DE LUTA
     
 '''
 
@@ -20,7 +19,10 @@ pygame.init()
 
 # DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
-    screen.fill(Color(0, 140, 0).rgb)
+    bg = pygame.image.load("./images/sexo.png")
+
+#INSIDE OF THE GAME LOOP
+    screen.blit(bg, (0, 0))
     
     screen.blit(p1.get_sprite(), p1.rect)
     screen.blit(g1.get_sprite(), g1.rect)
