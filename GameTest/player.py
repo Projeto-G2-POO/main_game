@@ -6,8 +6,6 @@ class Player(Creature):
         super().__init__(size, location, sprite_path='.\GameTest\sprites\player_sprite.png')
         self.veloc = veloc
         
-        self.rect.x = self.location[0]
-        self.rect.y = self.location[1]
         
     def change_player_sprite(self, event):
         if event.type == pygame.KEYDOWN:
@@ -26,6 +24,7 @@ class Player(Creature):
             if event.key == pygame.K_s:
                 self.set_sprite_path('.\GameTest\sprites\player_sprite.png')
                 self.player_sprite_load_image()
+            
                 
     def player_sprite_load_image(self):
         self.sprite  = pygame.image.load(self.sprite_path).convert_alpha()

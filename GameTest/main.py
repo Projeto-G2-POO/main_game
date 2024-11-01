@@ -2,6 +2,7 @@ import pygame
 from player import Player
 from color import Color
 from goblin import Goblin
+from dialogue_box import DialogueBox
 
 '''
 
@@ -23,8 +24,14 @@ def draw_screen():
     
     screen.blit(p1.get_sprite(), p1.rect)
     screen.blit(g1.get_sprite(), g1.rect)
+    screen.blit(db_g1.get_render(), db_g1.rect)
     
-    
+
+def show_dialogue_box():
+    if p1.rect.colliderect(g1):
+        db_g1.ative_in_screen(screen, Color(102, 102, 255))
+        
+
 # CONFIG SCREEN ON GAME
 screen_size = (800, 800)
 screen = pygame.display.set_mode(screen_size)
@@ -34,7 +41,11 @@ pygame.display.set_caption('Game Test Alpha')
 p1 = Player([44, 54], [400, 400], 5)
 
 # GOBLIN OBJECT SET
-g1 = Goblin([44, 54], [400, 800], 2, 5)
+g1 = Goblin([44, 54], [400, 100], 2, 5)
+
+# CREATE A DIALOGUE BOX
+text = 'Teste!'
+db_g1 = DialogueBox(screen_size, 400, 200, text, Color(51, 0, 0))
 
 # GAME IMPORT VARIAVELS
 run_game = True
@@ -51,8 +62,8 @@ while run_game:
     
         p1.change_player_sprite(event)
     
-    g1.chase_player(p1.rect, g1.rect)
     p1.move_player(screen, screen_size, p1.rect)
+    show_dialogue_box()
     
     pygame.time.wait(1)
     pygame.display.flip()
