@@ -6,7 +6,7 @@ class DialogueBox:
         self.box_width = box_width
         self.box_height = box_height
         self.box_x = (screen_size[0] - box_width) // 2
-        self.box_y = (screen_size[1] - box_height) // 2
+        self.box_y = (screen_size[1] - box_height) - 40
         
     
     def set_text(self, text, color_text):
