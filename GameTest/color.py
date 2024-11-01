@@ -16,3 +16,6 @@ class Color:
     
     def black():
         return (0, 0, 0)
+    
+    def white():
+        return (255, 255, 255)
