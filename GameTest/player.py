@@ -3,7 +3,7 @@ from creature import Creature
 
 class Player(Creature):
     def __init__(self, size, location, veloc):
-        super().__init__(size, location, sprite_path='.\GameTest\sprites\player_sprite.png')
+        super().__init__(size, location, sprite_path='.\GameTest\sprites\player-r.png')
         self.veloc = veloc
         
         
