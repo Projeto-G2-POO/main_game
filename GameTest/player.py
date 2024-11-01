@@ -3,26 +3,18 @@ from creature import Creature
 
 class Player(Creature):
     def __init__(self, size, location, veloc):
-        super().__init__(size, location, sprite_path='.\GameTest\sprites\player_sprite.png')
+        super().__init__(size, location, sprite_path='.\GameTest\sprites\player-r.png')
         self.veloc = veloc
         
         
     def change_player_sprite(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                self.set_sprite_path('.\GameTest\sprites\player_sprite_left.png')
+                self.set_sprite_path('.\GameTest\sprites\player-l.png')
                 self.player_sprite_load_image()
             
             if event.key == pygame.K_d:
-                self.set_sprite_path('.\GameTest\sprites\player_sprite_right.png')
-                self.player_sprite_load_image()
-                
-            if event.key == pygame.K_w:
-                self.set_sprite_path('.\GameTest\sprites\player_sprite_up.png')
-                self.player_sprite_load_image()
-            
-            if event.key == pygame.K_s:
-                self.set_sprite_path('.\GameTest\sprites\player_sprite.png')
+                self.set_sprite_path('.\GameTest\sprites\player-r.png')
                 self.player_sprite_load_image()
             
                 

@@ -20,7 +20,7 @@ pygame.init()
 
 # DRAW OBJECTS SPRITES ETC IN SCREEN
 def draw_screen():
-    bg = pygame.image.load("./images/sexo.png")
+    bg = pygame.image.load("./images/bg.png")
 
     #INSIDE OF THE GAME LOOP
     screen.blit(bg, (0, 0))

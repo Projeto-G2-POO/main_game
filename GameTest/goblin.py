@@ -3,7 +3,7 @@ from creature import Creature
 
 class Goblin(Creature):
     def __init__(self, size, location, veloc, hp):
-        super().__init__(size, location, sprite_path='.\GameTest\sprites\goblin_sprite.png')
+        super().__init__(size, location, sprite_path='.\GameTest\sprites\goblin.png')
         self.veloc = veloc
         self.hp = hp
 
