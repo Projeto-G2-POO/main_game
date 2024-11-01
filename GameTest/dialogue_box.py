@@ -1,4 +1,6 @@
 import pygame
+from color import Color
+from button import Button
 
 class DialogueBox:
     def __init__(self,screen_size ,box_width, box_height):
@@ -19,3 +21,11 @@ class DialogueBox:
         self.rect = self.render.get_rect(center=(self.box_x + self.box_width // 2, self.box_y + self.box_height // 2))
         
         pygame.draw.rect(screen, box_color, (self.box_x, self.box_y, self.box_width, self.box_height))
+        
+    
+    def show_dialogue(self, object_player, object_goblin, screen, button):
+        if object_player.rect.colliderect(object_goblin):
+            self.set_dialogue(screen, Color(0, 92, 83).rgb)
+            screen.blit(self.render, self.rect)
+            
+            button.show_button(screen)

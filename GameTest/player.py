@@ -31,26 +31,29 @@ class Player(Creature):
         self.sprite = pygame.transform.scale(self.sprite, (self.size[0], self.size[1]))
     
     
-    def move_player(self, screen, screen_size, player):
+    def move_player(self, screen, screen_size):
         keys = pygame.key.get_pressed()
         
-        player.x += (keys[pygame.K_d] - keys[pygame.K_a]) * self.veloc
-        player.y += (keys[pygame.K_s] - keys[pygame.K_w]) * self.veloc
+        self.rect.x += (keys[pygame.K_d] - keys[pygame.K_a]) * self.veloc
+        self.rect.y += (keys[pygame.K_s] - keys[pygame.K_w]) * self.veloc
 
-        player.centerx = player.centerx % screen.get_width()
-        player.centery = player.centery % screen.get_height()
+        self.rect.centerx = self.rect.centerx % screen.get_width()
+        self.rect.centery = self.rect.centery % screen.get_height()
         
-        if player.x < 0:
-            player.x = 0
+        if self.rect.x < 0:
+            self.rect.x = 0
         
-        if player.x + self.size[0] > screen_size[0]:
-            player.x = screen_size[0] - self.size[0]
+        if self.rect.x + self.size[0] > screen_size[0]:
+            self.rect.x = screen_size[0] - self.size[0]
         
-        if player.y < 0:
-            player.y = 0
+        if self.rect.y < 0:
+            self.rect.y = 0
         
-        if player.y + self.size[1] > screen_size[1]:
-            player.y = screen_size[1] - self.size[1]
+        if self.rect.y + self.size[1] > screen_size[1]:
+            self.rect.y = screen_size[1] - self.size[1]
 
-        if player.y > 704:
-            player.y = 704
+        if self.rect.y > 704:
+            self.rect.y = 704
+            
+
+    
