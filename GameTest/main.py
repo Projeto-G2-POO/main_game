@@ -27,6 +27,12 @@ def draw_screen():
     screen.surface.blit(p1.sprite, p1.rect)
 
 
+def fase():
+    enemies = []
+    
+    # FAZER A FASE PRINCIPAL...
+
+
 # INIT PYGAME
 pygame.init()
 
@@ -64,8 +70,8 @@ while run_game:
     
         p1.change_player_sprite(event)
             
-    p1.move_player()
     db_g1.show_dialogue(p1, g1, events)
+    p1.move_player()
     
     pygame.time.wait(1)
     pygame.display.flip()

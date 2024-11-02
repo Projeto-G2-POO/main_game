@@ -1,4 +1,5 @@
 import pygame
+import pygame_widgets
 
 from color import Color
 from pygame_widgets.button import Button
@@ -32,7 +33,9 @@ class DialogueBox:
             
     
     def show_dialogue_button(self):
+        
         text_start = 'Começar jogo'
+        
         self.button = Button(
             self.screen.surface, self.box_x, self.box_y - self.box_height, self.box_width, self.box_height,
             text=text_start,
@@ -40,11 +43,17 @@ class DialogueBox:
             inactiveColour=Color.green(),
             pressedColour=Color.red(),
             radius=0,
-            onClick=lambda: print('Funcionou!')
+            onClick=lambda: self.button_ative()
         )
         
         
     def update_dialogue_button(self, events):
         self.button.listen(events)
         self.button.draw()
+        
         pygame.display.update()
+        pygame_widgets.update(events)
+        
+        
+    def button_ative(self):
+        print('Funcionou!')
