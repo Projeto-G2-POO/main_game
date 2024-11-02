@@ -1,7 +1,8 @@
 import pygame
 
 class Creature:
-    def __init__(self, size, location, sprite_path):
+    def __init__(self, screen, size, location, sprite_path):
+        self.screen = screen
         self.size = size
         self.location = location
                 
@@ -9,22 +10,15 @@ class Creature:
         self.sprite = pygame.transform.scale(self.sprite, (self.size[0], self.size[1]))
 
         self.rect = pygame.Rect(self.location[0], self.location[1] , self.size[0], self.size[1])
-        self.rect = self.get_sprite().get_rect()
+        self.rect = self.sprite.get_rect()
 
         self.rect.x = self.location[0]
         self.rect.y = self.location[1]
-
+        
+        
     def set_sprite_path(self, sprite_path):
         self.sprite_path = sprite_path
         
         
     def get_sprite_path(self):
         return self.sprite_path
-
-
-    def set_sprite(self, sprite):
-        self.sprite = sprite
-    
-        
-    def get_sprite(self):
-        return self.sprite

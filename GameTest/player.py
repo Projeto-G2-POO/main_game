@@ -2,8 +2,8 @@ import pygame
 from creature import Creature
 
 class Player(Creature):
-    def __init__(self, size, location, veloc):
-        super().__init__(size, location, sprite_path='.\GameTest\sprites\player-r.png')
+    def __init__(self, screen, size, location, veloc):
+        super().__init__(screen, size, location, sprite_path='.\GameTest\sprites\player-r.png')
         self.veloc = veloc
         
         
@@ -23,29 +23,26 @@ class Player(Creature):
         self.sprite = pygame.transform.scale(self.sprite, (self.size[0], self.size[1]))
     
     
-    def move_player(self, screen, screen_size):
+    def move_player(self):
         keys = pygame.key.get_pressed()
         
         self.rect.x += (keys[pygame.K_d] - keys[pygame.K_a]) * self.veloc
         self.rect.y += (keys[pygame.K_s] - keys[pygame.K_w]) * self.veloc
 
-        self.rect.centerx = self.rect.centerx % screen.get_width()
-        self.rect.centery = self.rect.centery % screen.get_height()
+        self.rect.centerx = self.rect.centerx % self.screen.surface.get_width()
+        self.rect.centery = self.rect.centery % self.screen.surface.get_height()
         
         if self.rect.x < 0:
             self.rect.x = 0
         
-        if self.rect.x + self.size[0] > screen_size[0]:
-            self.rect.x = screen_size[0] - self.size[0]
+        if self.rect.x + self.size[0] > self.screen.screen_size[0]:
+            self.rect.x = self.screen.screen_size[0] - self.size[0]
         
         if self.rect.y < 0:
             self.rect.y = 0
         
-        if self.rect.y + self.size[1] > screen_size[1]:
-            self.rect.y = screen_size[1] - self.size[1]
+        if self.rect.y + self.size[1] > self.screen.screen_size[1]:
+            self.rect.y = self.screen.screen_size[1] - self.size[1]
 
         if self.rect.y > 704:
             self.rect.y = 704
-            
-
-    

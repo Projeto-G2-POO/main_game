@@ -1,9 +1,8 @@
-import pygame
 from creature import Creature
 
 class Goblin(Creature):
-    def __init__(self, size, location, veloc, hp):
-        super().__init__(size, location, sprite_path='.\GameTest\sprites\goblin.png')
+    def __init__(self, screen, size, location, veloc, hp):
+        super().__init__(screen, size, location, sprite_path='.\GameTest\sprites\goblin.png')
         self.veloc = veloc
         self.hp = hp
 
