@@ -1,4 +1,5 @@
 import pygame
+
 from color import Color
 from pygame_widgets.button import Button
 

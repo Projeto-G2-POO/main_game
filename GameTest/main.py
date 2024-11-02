@@ -1,9 +1,11 @@
 import pygame
+
 from player import Player
-from color import Color
 from goblin import Goblin
-from dialogue_box import DialogueBox
+
+from color import Color
 from screen import Screen
+from dialogue_box import DialogueBox
 
 '''
 
