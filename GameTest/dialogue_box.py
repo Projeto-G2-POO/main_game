@@ -1,6 +1,6 @@
 import pygame
 from color import Color
-from button import Button
+from pygame_widgets.button import Button
 
 class DialogueBox:
     def __init__(self,screen_size ,box_width, box_height):
@@ -23,9 +23,27 @@ class DialogueBox:
         pygame.draw.rect(screen, box_color, (self.box_x, self.box_y, self.box_width, self.box_height))
         
     
-    def show_dialogue(self, object_player, object_goblin, screen, button):
+    def show_dialogue(self, object_player, object_goblin, screen, events):
         if object_player.rect.colliderect(object_goblin):
             self.set_dialogue(screen, Color(0, 92, 83).rgb)
             screen.blit(self.render, self.rect)
+            self.update_dialogue_button(events)
             
-            button.show_button(screen)
+    
+    def show_dialogue_button(self, screen):
+        text_start = 'Começar jogo'
+        self.button = Button(
+            screen, self.box_x, self.box_y - self.box_height, self.box_width, self.box_height,
+            text=text_start,
+            fontSize=24, margin=20,
+            inactiveColour=Color.green(),
+            pressedColour=Color.red(),
+            radius=0,
+            onClick=lambda: print('Funcionou!')
+        )
+        
+        
+    def update_dialogue_button(self, events):
+        self.button.listen(events)
+        self.button.draw()
+        pygame.display.update()

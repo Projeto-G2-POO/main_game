@@ -1,9 +1,10 @@
 import pygame
+import pygame_widgets
+from pygame_widgets.button import Button
 from player import Player
 from color import Color
 from goblin import Goblin
 from dialogue_box import DialogueBox
-from button import Button
 
 '''
 
@@ -27,7 +28,7 @@ def draw_screen():
     
     screen.blit(p1.get_sprite(), p1.rect)
     screen.blit(g1.get_sprite(), g1.rect)
-   
+
 
 # CONFIG SCREEN ON GAME
 screen_size = (800, 800)
@@ -41,13 +42,12 @@ p1 = Player([44, 54], [400, 400], 5)
 g1 = Goblin([44, 54], [400, 100], 2, 5)
 
 # CREATE A DIALOGUE BOX
-text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo!'
+text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo!\nVamos jogar?'
 db_g1 = DialogueBox(screen_size, 390, 80)
 db_g1.set_text(text_dialogue, Color.white())
 
 # CREATE A BUTTON START
-text_btn = 'Start'
-btn_start = Button(390, 80, Color(140, 130, 120), 50, 40, text_btn)
+db_g1.show_dialogue_button(screen)
 
 # GAME IMPORT VARIAVELS
 run_game = True
@@ -58,14 +58,16 @@ while run_game:
     draw_screen()
     clock.tick(120)
     
-    for event in pygame.event.get():
+    events = pygame.event.get()
+    
+    for event in events:
         if event.type == pygame.QUIT:
             run_game = False
     
         p1.change_player_sprite(event)
             
     p1.move_player(screen, screen_size)
-    db_g1.show_dialogue(p1, g1, screen, btn_start)
+    db_g1.show_dialogue(p1, g1, screen, events)
     
     pygame.time.wait(1)
     pygame.display.flip()
