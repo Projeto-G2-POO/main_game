@@ -1,6 +1,8 @@
 import pygame
 import random
 
+from datetime import datetime
+
 from goblin import Goblin
 
 class Screen:
@@ -25,12 +27,14 @@ class Screen:
             enemie.check_hp(enemie)
             
             
-    def create_goblin(self, enemies):
+    def create_goblin(self, enemies, veloc):
+        random.seed(datetime.now().timestamp())
+        
         random_y = random.uniform(50, 700)
-            
-        if random.uniform(1, 2) == 1:
+        
+        if random.uniform(1, 10) > 5:
             random_x = random.uniform(10, 200)
         else:
             random_x = random.uniform(600, 750)
             
-        enemies.append(Goblin(self, [44, 54], [random_x, random_y], 2, 1))
+        enemies.append(Goblin(self, [44, 54], [random_x, random_y], veloc, 1))

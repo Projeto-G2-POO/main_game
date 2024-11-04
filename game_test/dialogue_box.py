@@ -12,7 +12,7 @@ class DialogueBox:
         self.box_x = (self.screen.screen_size[0] - box_width) // 2
         self.box_y = (self.screen.screen_size[1] - box_height) - 40
         
-        self.fase_active = False
+        self.level_active = False
         
     
     def set_text(self, text, color_text):
@@ -58,5 +58,6 @@ class DialogueBox:
         
         
     def button_ative(self):
-        if not self.fase_active:
-            self.fase_active = True
+        if not self.level_active:
+            self.level_active = True
+            

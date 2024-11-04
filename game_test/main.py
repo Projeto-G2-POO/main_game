@@ -1,11 +1,10 @@
-import time
 import pygame
-import random
 
 from player import Player
 from goblin import Goblin
 
 from color import Color
+from levels import Level
 from screen import Screen
 from dialogue_box import DialogueBox
 
@@ -37,18 +36,15 @@ def draw_screen():
         sphere.colide_with_enemies(enemies)
 
 
-def fase():
-    if db_g1.fase_active:
-        g1.is_active = False
-        
-        # CRIAR SISTEMA PARA TERMINAR A FASE DEPOIS DE MATAR
-        # CERTA QUANTIDADE DE INIMIGOS
-        
-        if pygame.time.get_ticks() % 100 == 0 and len(enemies) < 10:
-            screen.create_goblin(enemies)
-        
-        if len(enemies) > 10:
-            db_g1.fase_active = False
+# HOME SCREEN
+def home_screen():
+    pass
+
+
+# LEVEL SELECTION
+def level_seletion():
+    if l1.number == 1:
+        l1.power1(db_g1, screen, enemies, pygame.time.get_ticks(), g1)
     
 
 # INIT PYGAME
@@ -60,6 +56,9 @@ screen = Screen()
 # LIST OF ENEMIES AND SPHERES IN GAME
 enemies = []
 spheres = []
+
+# LEVEL OBJECT SET
+l1 = Level(1, 10, 2)
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5)
@@ -98,7 +97,7 @@ while run_game:
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
     
-    fase()
+    level_seletion()
     
     pygame.time.wait(1)
     pygame.display.flip()
