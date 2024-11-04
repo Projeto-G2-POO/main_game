@@ -1,7 +1,8 @@
 import pygame
 
 class Creature:
-    def __init__(self, screen, size, location, sprite_path, is_active):
+    def __init__(self, hp, screen, size, location, sprite_path, is_active):
+        self.hp = hp
         self.screen = screen
         self.size = size
         self.location = location
@@ -24,7 +25,3 @@ class Creature:
         
     def get_sprite_path(self):
         return self.sprite_path
-    
-    
-    def check_hp():
-        pass

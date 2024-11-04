@@ -1,10 +1,10 @@
 from creature import Creature
 
 class Goblin(Creature):
-    def __init__(self, screen, size, location, veloc, hp):
+    def __init__(self, screen, size, location, veloc):
         super().__init__(screen, size, location, sprite_path='.\game_test\sprites\goblin.png', is_active=True)
         self.veloc = veloc
-        self.hp = hp
+        self.hp = 20
 
     def chase_player(self, player):
         if player.rect.x != self.rect.x:

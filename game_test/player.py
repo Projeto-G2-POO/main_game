@@ -9,10 +9,15 @@ class Player(Creature):
         self.veloc = veloc
         self.death = False
 
+        self.hp = 100
+
         self.right = True
         self.left = False
         
         
+    def updateHp(self, hp):
+        self.hp += hp
+
     def change_player_sprite(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
@@ -64,7 +69,3 @@ class Player(Creature):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 spheres.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 5, self.right))
-                
-                
-    def check_hp():
-        pass
