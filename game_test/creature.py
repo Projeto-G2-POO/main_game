@@ -25,3 +25,6 @@ class Creature:
     def get_sprite_path(self):
         return self.sprite_path
     
+    
+    def check_hp():
+        pass

@@ -12,6 +12,8 @@ class DialogueBox:
         self.box_x = (self.screen.screen_size[0] - box_width) // 2
         self.box_y = (self.screen.screen_size[1] - box_height) - 40
         
+        self.fase_active = False
+        
     
     def set_text(self, text, color_text):
         self.text = text
@@ -26,7 +28,7 @@ class DialogueBox:
         
     
     def show_dialogue(self, object_player, object_goblin, events):
-        if object_player.rect.colliderect(object_goblin):
+        if object_player.rect.colliderect(object_goblin) and object_goblin.is_active:
             self.set_dialogue(Color(0, 92, 83).rgb)
             self.screen.surface.blit(self.render, self.rect)
             self.update_dialogue_button(events)
@@ -56,4 +58,5 @@ class DialogueBox:
         
         
     def button_ative(self):
-        print('Funcionou!')
+        if not self.fase_active:
+            self.fase_active = True

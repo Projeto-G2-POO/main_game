@@ -1,4 +1,6 @@
+import time
 import pygame
+import random
 
 from player import Player
 from goblin import Goblin
@@ -11,10 +13,8 @@ from dialogue_box import DialogueBox
 
 COISAS PARA FAZER:
 
-    - SISTEMA DE DIALOGO
     - IA PARA OS PERSONAGENS
     - SISTEMA DE INVENTARIO
-    - SISTEMA DE LUTA
     
 '''
 
@@ -23,24 +23,43 @@ def draw_screen():
     screen.get_background()
 
     screen.surface.blit(screen.background, (0, 0))
-    # screen.surface.blit(g1.sprite, g1.rect)
-    # screen.surface.blit(p1.sprite, p1.rect)
     
     screen.object_in_screen(g1)
     screen.object_in_screen(p1)
+    
+    for enemie in enemies:
+        screen.object_in_screen(enemie)
+        enemie.chase_player(p1)
+        
+    for sphere in spheres:
+        screen.object_in_screen(sphere)
+        sphere.move_sphere(spheres, sphere)
+        sphere.colide_with_enemies(enemies)
 
 
 def fase():
-    enemies = []
+    if db_g1.fase_active:
+        g1.is_active = False
+        
+        # CRIAR SISTEMA PARA TERMINAR A FASE DEPOIS DE MATAR
+        # CERTA QUANTIDADE DE INIMIGOS
+        
+        if pygame.time.get_ticks() % 100 == 0 and len(enemies) < 10:
+            screen.create_goblin(enemies)
+        
+        if len(enemies) > 10:
+            db_g1.fase_active = False
     
-    # FAZER A FASE PRINCIPAL...
-
 
 # INIT PYGAME
 pygame.init()
 
 # CREATE OBJECT SCREEN
 screen = Screen()
+
+# LIST OF ENEMIES AND SPHERES IN GAME
+enemies = []
+spheres = []
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5)
@@ -72,9 +91,14 @@ while run_game:
             run_game = False
     
         p1.change_player_sprite(event)
+        p1.throw_sphere(event, spheres)
+        
+        screen.check_enemies(enemies)
             
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
+    
+    fase()
     
     pygame.time.wait(1)
     pygame.display.flip()

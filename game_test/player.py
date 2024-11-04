@@ -1,21 +1,33 @@
 import pygame
+
+from sphere import Sphere
 from creature import Creature
 
 class Player(Creature):
     def __init__(self, screen, size, location, veloc):
-        super().__init__(screen, size, location, sprite_path='.\GameTest\sprites\player-r.png', is_active=True)
+        super().__init__(screen, size, location, sprite_path='.\game_test\sprites\player-r.png', is_active=True)
         self.veloc = veloc
+        self.death = False
+
+        self.right = True
+        self.left = False
         
         
     def change_player_sprite(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                self.set_sprite_path('.\GameTest\sprites\player-l.png')
+                self.set_sprite_path('.\game_test\sprites\player-l.png')
                 self.player_sprite_load_image()
+
+                self.right = False
+                self.left = True
             
             if event.key == pygame.K_d:
-                self.set_sprite_path('.\GameTest\sprites\player-r.png')
+                self.set_sprite_path('.\game_test\sprites\player-r.png')
                 self.player_sprite_load_image()
+
+                self.right = True
+                self.left = False
             
                 
     def player_sprite_load_image(self):
@@ -46,3 +58,13 @@ class Player(Creature):
 
         if self.rect.y > 704:
             self.rect.y = 704
+            
+    
+    def throw_sphere(self, event, spheres):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_f:
+                spheres.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 5, self.right))
+                
+                
+    def check_hp():
+        pass
