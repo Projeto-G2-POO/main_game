@@ -23,8 +23,11 @@ def draw_screen():
     screen.get_background()
 
     screen.surface.blit(screen.background, (0, 0))
-    screen.surface.blit(g1.sprite, g1.rect)
-    screen.surface.blit(p1.sprite, p1.rect)
+    # screen.surface.blit(g1.sprite, g1.rect)
+    # screen.surface.blit(p1.sprite, p1.rect)
+    
+    screen.object_in_screen(g1)
+    screen.object_in_screen(p1)
 
 
 def fase():

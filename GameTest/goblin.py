@@ -2,7 +2,7 @@ from creature import Creature
 
 class Goblin(Creature):
     def __init__(self, screen, size, location, veloc, hp):
-        super().__init__(screen, size, location, sprite_path='.\GameTest\sprites\goblin.png')
+        super().__init__(screen, size, location, sprite_path='.\GameTest\sprites\goblin.png', is_active=True)
         self.veloc = veloc
         self.hp = hp
 
