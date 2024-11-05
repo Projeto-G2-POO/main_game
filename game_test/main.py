@@ -30,9 +30,9 @@ def draw_screen():
         screen.object_in_screen(enemie)
         enemie.chase_player(p1)
         
-    for sphere in spheres:
+    for sphere in p1.spheres_list:
         screen.object_in_screen(sphere)
-        sphere.move_sphere(spheres, sphere)
+        sphere.move_sphere(p1.spheres_list, sphere)
         sphere.colide_with_enemies(l1.enemies_list)
 
 
@@ -48,17 +48,14 @@ pygame.init()
 # CREATE OBJECT SCREEN
 screen = Screen()
 
-# LIST OF ENEMIES AND SPHERES IN GAME
-spheres = []
-
 # LEVEL OBJECT SET
 l1 = Level(1, 10, 2)
 
 # PLAYER OBJECT SET
-p1 = Player(screen, [44, 54], [400, 400], 5)
+p1 = Player(screen, [44, 54], [400, 400], 5, 5)
 
 # GOBLIN OBJECT SET
-g1 = Goblin(screen, [44, 54], [400, 100], 2, 999)
+g1 = Goblin(screen, [44, 54], [400, 100], 999, 2)
 
 # CREATE A DIALOGUE BOX
 text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo!\nVamos jogar?'
@@ -84,7 +81,7 @@ while run_game:
             run_game = False
     
         p1.change_player_sprite(event)
-        p1.throw_sphere(event, spheres)
+        p1.throw_sphere(event)
         
         screen.check_enemies(l1.enemies_list)
             

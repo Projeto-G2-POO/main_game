@@ -1,8 +1,8 @@
 import pygame
 
 class Creature:
-    def __init__(self, hp, screen, size, location, sprite_path, is_active):
-        self.hp = hp
+    def __init__(self, screen, size, location, sprite_path, is_active):
+        
         self.screen = screen
         self.size = size
         self.location = location

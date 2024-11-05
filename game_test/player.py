@@ -4,16 +4,21 @@ from sphere import Sphere
 from creature import Creature
 
 class Player(Creature):
-    def __init__(self, screen, size, location, veloc):
+    def __init__(self, screen, size, location, veloc, hp):
         super().__init__(screen, size, location, sprite_path='.\game_test\sprites\player-r.png', is_active=True)
+        
         self.veloc = veloc
+        self.hp = hp
+        
         self.death = False
-
-        self.hp = 100
 
         self.right = True
         self.left = False
         
+        self.spheres_list = []
+        
+    # def __init__(self, hp, screen, size, location, sprite_path, is_active):
+    #     super().__init__(hp, screen, size, location, sprite_path, is_active)
         
     def updateHp(self, hp):
         self.hp += hp
@@ -65,7 +70,7 @@ class Player(Creature):
             self.rect.y = 704
             
     
-    def throw_sphere(self, event, spheres):
+    def throw_sphere(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
-                spheres.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 5, self.right))
+                self.spheres_list.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 5, self.right))
