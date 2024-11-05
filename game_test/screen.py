@@ -27,7 +27,7 @@ class Screen:
             enemie.check_hp(enemie)
             
             
-    def create_goblin(self, enemies, tot_enemies, veloc):
+    def create_goblin(self, enemies, all_enemies, veloc):
         random.seed(datetime.now().timestamp())
         
         random_y = random.uniform(50, 700)
@@ -38,4 +38,4 @@ class Screen:
             random_x = random.uniform(600, 750)
             
         enemies.append(Goblin(self, [44, 54], [random_x, random_y], veloc, 1))
-        tot_enemies.append(Goblin(self, [44, 54], [random_x, random_y], veloc, 1))
+        all_enemies.append(Goblin(self, [44, 54], [random_x, random_y], veloc, 1))

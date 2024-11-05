@@ -49,7 +49,7 @@ pygame.init()
 screen = Screen()
 
 # LEVEL OBJECT SET
-l1 = Level(1, 10, 2)
+l1 = Level(1, 10, 1)
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
