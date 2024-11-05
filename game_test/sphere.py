@@ -1,4 +1,3 @@
-import pygame
 from creature import Creature
 
 class Sphere(Creature):
@@ -21,3 +20,4 @@ class Sphere(Creature):
         for enemie in enemies:
             if self.rect.colliderect(enemie):
                 enemie.hp -= 1
+                enemies.pop(enemies.index(enemie))

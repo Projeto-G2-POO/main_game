@@ -26,25 +26,20 @@ def draw_screen():
     screen.object_in_screen(g1)
     screen.object_in_screen(p1)
     
-    for enemie in enemies:
+    for enemie in l1.enemies_list:
         screen.object_in_screen(enemie)
         enemie.chase_player(p1)
         
     for sphere in spheres:
         screen.object_in_screen(sphere)
         sphere.move_sphere(spheres, sphere)
-        sphere.colide_with_enemies(enemies)
-
-
-# HOME SCREEN
-def home_screen():
-    pass
+        sphere.colide_with_enemies(l1.enemies_list)
 
 
 # LEVEL SELECTION
 def level_seletion():
     if l1.number == 1:
-        l1.power1(db_g1, screen, enemies, pygame.time.get_ticks(), g1)
+        l1.power1(db_g1, screen, pygame.time.get_ticks(), g1)
     
 
 # INIT PYGAME
@@ -54,7 +49,6 @@ pygame.init()
 screen = Screen()
 
 # LIST OF ENEMIES AND SPHERES IN GAME
-enemies = []
 spheres = []
 
 # LEVEL OBJECT SET
@@ -92,7 +86,7 @@ while run_game:
         p1.change_player_sprite(event)
         p1.throw_sphere(event, spheres)
         
-        screen.check_enemies(enemies)
+        screen.check_enemies(l1.enemies_list)
             
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
