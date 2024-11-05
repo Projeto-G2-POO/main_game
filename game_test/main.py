@@ -38,8 +38,8 @@ def draw_screen():
 
 # LEVEL SELECTION
 def level_seletion():
-    if l1.number == 1:
-        l1.power1(db_g1, screen, pygame.time.get_ticks(), g1)
+    if l1.number == 1 or l1.number == 2:
+        l1.power_goblin(db_g1, screen, pygame.time.get_ticks(), g1)
     
 
 # INIT PYGAME
@@ -49,13 +49,13 @@ pygame.init()
 screen = Screen()
 
 # LEVEL OBJECT SET
-l1 = Level(1, 10, 1)
+l1 = Level(1, 5, 1)
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
 
 # GOBLIN OBJECT SET
-g1 = Goblin(screen, [44, 54], [400, 100], 999, 2)
+g1 = Goblin(screen, [44, 54], [400, 100], 9999, 2)
 
 # CREATE A DIALOGUE BOX
 text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo!\nVamos jogar?'
