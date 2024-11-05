@@ -16,12 +16,11 @@ class Player(Creature):
         self.left = False
         
         self.spheres_list = []
-        
-    # def __init__(self, hp, screen, size, location, sprite_path, is_active):
-    #     super().__init__(hp, screen, size, location, sprite_path, is_active)
+    
         
     def updateHp(self, hp):
         self.hp += hp
+
 
     def change_player_sprite(self, event):
         if event.type == pygame.KEYDOWN:
@@ -74,3 +73,8 @@ class Player(Creature):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 self.spheres_list.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 5, self.right))
+                
+        
+    # FUNCAO PARA CHEGAR A VIDA ATUAL DO PLAYER      
+    def check_hp(self):
+        pass

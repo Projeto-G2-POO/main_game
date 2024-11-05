@@ -23,4 +23,9 @@ class Goblin(Creature):
     def check_hp(self, enemie):
         if self.hp <= 0:
             enemie.is_active = False
+        
+    
+    # FUNCAO PARA DAR DANO NO PLAYER    
+    def demage_player(self, player):
+        pass
             
