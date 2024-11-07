@@ -38,11 +38,11 @@ def draw_screen():
 
 # LEVEL SELECTION
 def level_seletion():
-    if l1.number == 1 or l1.number == 2:
-        l1.power_goblin(db_g1, screen, pygame.time.get_ticks(), g1)
+    if l1.number <= 3:
+        l1.power_enemy(db_g1, screen, pygame.time.get_ticks(), g1, 'goblin')
         
-    if l1.number == 3 or l1.number == 4:
-        l1.power_goblin(db_g1, screen, pygame.time.get_ticks(), g1)
+    if l1.number >= 4 and l1.number <= 6:
+        l1.power_enemy(db_g1, screen, pygame.time.get_ticks(), g1, 'hobgoblin')
     
 
 # INIT PYGAME
