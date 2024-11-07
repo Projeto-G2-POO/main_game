@@ -23,9 +23,9 @@ class Screen:
             
           
     @staticmethod  
-    def check_enemies(enemies):
+    def check_enemies(enemies, player):
         for enemie in enemies:
-            enemie.check_hp(enemie)
+            enemie.check_hp(enemie, player)
             
     
     @staticmethod 
@@ -42,18 +42,13 @@ class Screen:
         return [random_x, random_y]
     
     
-    def create_enemy(self, enemies, all_enemies, veloc, enemy_type):
+    def create_enemy(self, enemies, veloc, enemy_type):
         coords_list = self.random_coords()
         
         if enemy_type == 'goblin':
             
             enemies.append(Goblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 1))
-            all_enemies.append(Goblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 1))
             
         elif enemy_type == 'hobgoblin':
             
             enemies.append(Hobgoblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 2))
-            all_enemies.append(Hobgoblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 2))
-        
-        else:
-            print('Deu mt merda')

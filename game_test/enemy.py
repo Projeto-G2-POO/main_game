@@ -13,7 +13,7 @@ class Enemy:
                 self.rect.y -= self.veloc
                 
     
-    def check_hp(self, enemie):
+    def check_hp(self, enemie, player):
         if self.hp <= 0:
             enemie.is_active = False
         

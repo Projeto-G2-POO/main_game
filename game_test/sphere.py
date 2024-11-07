@@ -16,8 +16,9 @@ class Sphere(Creature):
             self.rect.x -= self.veloc
 
 
-    def colide_with_enemies(self, enemies):
+    def colide_with_enemies(self, enemies, player):
         for enemie in enemies:
             if self.rect.colliderect(enemie):
                 enemie.hp -= 1
                 enemies.pop(enemies.index(enemie))
+                player.enemies_deaths += 1

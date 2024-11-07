@@ -16,6 +16,7 @@ class Player(Creature):
         self.left = False
         
         self.spheres_list = []
+        self.enemies_deaths = 0
 
 
     def change_player_sprite(self, event):

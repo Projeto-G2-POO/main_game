@@ -33,7 +33,7 @@ def draw_screen():
     for sphere in p1.spheres_list:
         screen.object_in_screen(sphere)
         sphere.move_sphere(p1.spheres_list, sphere)
-        sphere.colide_with_enemies(l1.enemies_list)
+        sphere.colide_with_enemies(l1.enemies_list, p1)
 
 
 # LEVEL SELECTION
@@ -51,11 +51,11 @@ pygame.init()
 # CREATE OBJECT SCREEN
 screen = Screen()
 
-# LEVEL OBJECT SET
-l1 = Level(1, 5, 1)
-
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
+
+# LEVEL OBJECT SET
+l1 = Level(1, 5, 1, p1)
 
 # GOBLIN OBJECT SET
 g1 = Goblin(screen, [44, 54], [400, 100], 9999, 2)
@@ -86,7 +86,7 @@ while run_game:
         p1.change_player_sprite(event)
         p1.throw_sphere(event)
         
-        screen.check_enemies(l1.enemies_list)
+        screen.check_enemies(l1.enemies_list, p1)
             
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
