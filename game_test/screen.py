@@ -23,9 +23,9 @@ class Screen:
             
           
     @staticmethod  
-    def check_enemies(enemies, player):
+    def check_enemies(enemies):
         for enemie in enemies:
-            enemie.check_hp(enemie, player)
+            enemie.check_hp(enemie)
             
     
     @staticmethod 

@@ -71,7 +71,7 @@ class Player(Creature):
             if event.key == pygame.K_f:
                 self.spheres_list.append(Sphere(self.screen, [40, 40], [self.rect.x, self.rect.y], 7, self.right))
                 
-        
-    # FUNCAO PARA CHEGAR A VIDA ATUAL DO PLAYER      
+           
     def check_hp(self):
-        pass
+        if self.hp <= 0:
+            self.death = True

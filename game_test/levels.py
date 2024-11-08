@@ -8,10 +8,13 @@ class Level():
         
         self.player= player
         self.enemies_list = enemies_list
+        
+        self.enemies_spawned = 0
 
 
     def home_power(self, goblin, dialogue_box):
         self.player.enemies_deaths = 0
+        self.enemies_spawned = 0
         
         self.number += 1
         self.enemies += 5
@@ -33,9 +36,10 @@ class Level():
         if dialogue_box.level_active:
             goblin.is_active = False
             
-            if ticks % 50 == 0 and len(self.enemies_list) < self.enemies:
+            if ticks % 50 == 0 and self.enemies_spawned <= self.enemies:
                 screen.create_enemy(self.enemies_list, self.veloc, enemy_type)
+                self.enemies_spawned += 1
             
-            if ticks % 50 == 0 and self.player.enemies_deaths == self.enemies:
+            if ticks % 50 == 0 and self.player.enemies_deaths >= self.enemies:
                 dialogue_box.level_active = False
                 self.home_power(goblin, dialogue_box) 

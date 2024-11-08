@@ -20,5 +20,6 @@ class Sphere(Creature):
         for enemie in enemies:
             if self.rect.colliderect(enemie):
                 enemie.hp -= 1
-                enemies.pop(enemies.index(enemie))
-                player.enemies_deaths += 1
+                if enemie.hp <= 0:
+                    enemies.pop(enemies.index(enemie))
+                    player.enemies_deaths += 1

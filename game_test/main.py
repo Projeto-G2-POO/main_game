@@ -3,6 +3,8 @@ import pygame
 from player import Player
 from goblin import Goblin
 
+
+from life import Life
 from color import Color
 from levels import Level
 from screen import Screen
@@ -22,6 +24,7 @@ def draw_screen():
     screen.get_background()
 
     screen.surface.blit(screen.background, (0, 0))
+    screen.surface.blit(p1_life.surface, p1_life.location)
     
     screen.object_in_screen(g1)
     screen.object_in_screen(p1)
@@ -29,6 +32,7 @@ def draw_screen():
     for enemie in l1.enemies_list:
         screen.object_in_screen(enemie)
         enemie.chase_player(p1)
+        enemie.demage_player(p1, pygame.time.get_ticks())
         
     for sphere in p1.spheres_list:
         screen.object_in_screen(sphere)
@@ -53,6 +57,7 @@ screen = Screen()
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
+p1_life = Life([0, 0], p1.hp)
 
 # LEVEL OBJECT SET
 l1 = Level(1, 5, 1, p1)
@@ -85,8 +90,9 @@ while run_game:
     
         p1.change_player_sprite(event)
         p1.throw_sphere(event)
+        p1_life.update_player_life(p1.hp, screen)
         
-        screen.check_enemies(l1.enemies_list, p1)
+        screen.check_enemies(l1.enemies_list)
             
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
