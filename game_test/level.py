@@ -15,6 +15,7 @@ class Level():
     def home_power(self, goblin, dialogue_box):
         self.player.enemies_deaths = 0
         self.enemies_spawned = 0
+        self.player.hp = 5
         
         self.number += 1
         self.enemies += 5

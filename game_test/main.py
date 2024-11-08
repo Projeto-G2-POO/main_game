@@ -6,7 +6,7 @@ from goblin import Goblin
 
 from life import Life
 from color import Color
-from levels import Level
+from level import Level
 from screen import Screen
 from dialogue_box import DialogueBox
 
@@ -57,7 +57,7 @@ screen = Screen()
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
-p1_life = Life([0, 0], p1.hp)
+p1_life = Life([30, 30], p1.hp)
 
 # LEVEL OBJECT SET
 l1 = Level(1, 5, 1, p1)
@@ -96,6 +96,11 @@ while run_game:
             
     db_g1.show_dialogue(p1, g1, events)
     p1.move_player()
+    p1.check_hp()
+    
+    if p1.death == True:
+        run_game = False
+        print('GAME OVER')
     
     level_seletion()
     

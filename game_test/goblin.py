@@ -1,5 +1,3 @@
-import pygame
-
 from enemy import Enemy
 from creature import Creature
 

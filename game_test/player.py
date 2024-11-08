@@ -73,5 +73,5 @@ class Player(Creature):
                 
            
     def check_hp(self):
-        if self.hp <= 0:
+        if self.hp <= 0 or self.death == True:
             self.death = True
