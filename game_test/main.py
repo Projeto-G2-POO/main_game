@@ -63,11 +63,11 @@ p1_life = Life([30, 30], p1.hp)
 l1 = Level(1, 5, 1, p1)
 
 # GOBLIN OBJECT SET
-g1 = Goblin(screen, [44, 54], [400, 100], 9999, 2)
+g1 = Goblin(screen, [44, 54], [400, 100], 9999, 2, '.\game_test\sprites\goblin_friend.png')
 
 # CREATE A DIALOGUE BOX
-text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo!\nVamos jogar?'
-db_g1 = DialogueBox(screen, 390, 80)
+text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo! Vamos jogar?'
+db_g1 = DialogueBox(screen, 520, 80)
 db_g1.set_text(text_dialogue, Color.white())
 
 # CREATE A BUTTON

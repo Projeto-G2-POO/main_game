@@ -29,7 +29,7 @@ class Level():
         
         goblin.is_active = True
         
-        new_text_dialogue = f'Uau, você se saiu muito bem!\n Vamos para o level {self.number}?'
+        new_text_dialogue = f'Uau, você se saiu muito bem! Vamos para o level {self.number}?'
         dialogue_box.set_text(new_text_dialogue, Color.white())
                      
                 
