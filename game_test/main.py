@@ -1,10 +1,9 @@
 import pygame
 
 from player import Player
-from goblin import Goblin
+from allied import Allied
 
-
-from life import Life
+from text import Text
 from color import Color
 from level import Level
 from screen import Screen
@@ -24,9 +23,10 @@ def draw_screen():
     screen.get_background()
 
     screen.surface.blit(screen.background, (0, 0))
-    screen.surface.blit(p1_life.surface, p1_life.location)
+    screen.surface.blit(p1_hp_text.surface, p1_hp_text.location)
+    screen.surface.blit(p1_deaths_text.surface, p1_deaths_text.location)
     
-    screen.object_in_screen(g1)
+    screen.object_in_screen(g_allied)
     screen.object_in_screen(p1)
     
     for enemie in l1.enemies_list:
@@ -42,11 +42,14 @@ def draw_screen():
 
 # LEVEL SELECTION
 def level_seletion():
-    if l1.number <= 3:
-        l1.power_enemy(db_g1, screen, pygame.time.get_ticks(), g1, 'goblin')
+    if not p1.death:
+        if l1.number <= 3:
+            l1.power_enemy(db_g_allied, screen, pygame.time.get_ticks(), g_allied, 'goblin')
         
-    if l1.number >= 4 and l1.number <= 6:
-        l1.power_enemy(db_g1, screen, pygame.time.get_ticks(), g1, 'hobgoblin')
+        if l1.number >= 4 and l1.number <= 6:
+            l1.power_enemy(db_g_allied, screen, pygame.time.get_ticks(), g_allied, 'hobgoblin')
+    else:
+        l1.reset_level(g_allied, db_g_allied)
     
 
 # INIT PYGAME
@@ -57,21 +60,23 @@ screen = Screen()
 
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
-p1_life = Life([30, 30], p1.hp)
+
+p1_hp_text = Text([30, 30], p1.hp, 'player_hp')
+p1_deaths_text = Text([30, 60], p1.total_deaths, 'player_deaths')
 
 # LEVEL OBJECT SET
 l1 = Level(1, 5, 1, p1)
 
 # GOBLIN OBJECT SET
-g1 = Goblin(screen, [44, 54], [400, 100], 9999, 2, '.\game_test\sprites\goblin_friend.png')
+g_allied = Allied(screen, [44, 54], [400, 100])
 
 # CREATE A DIALOGUE BOX
 text_dialogue = 'Ola viajante. Seja bem vindo a esse mundo! Vamos jogar?'
-db_g1 = DialogueBox(screen, 520, 80)
-db_g1.set_text(text_dialogue, Color.white())
+db_g_allied = DialogueBox(screen, 520, 80)
+db_g_allied.set_text(text_dialogue, Color.white())
 
 # CREATE A BUTTON
-db_g1.show_dialogue_button()
+db_g_allied.show_dialogue_button()
 
 # GAME IMPORTANT VARIAVELS
 run_game = True
@@ -90,17 +95,16 @@ while run_game:
     
         p1.change_player_sprite(event)
         p1.throw_sphere(event)
-        p1_life.update_player_life(p1.hp, screen)
+        
         
         screen.check_enemies(l1.enemies_list)
-            
-    db_g1.show_dialogue(p1, g1, events)
+      
+    p1_hp_text.update_player_life(p1.hp, screen)   
+    p1_deaths_text.update_player_deaths(p1.total_deaths, screen)
+       
+    db_g_allied.show_dialogue(p1, g_allied, events)
     p1.move_player()
     p1.check_hp()
-    
-    if p1.death == True:
-        run_game = False
-        print('GAME OVER')
     
     level_seletion()
     

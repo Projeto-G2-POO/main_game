@@ -15,7 +15,7 @@ class Level():
     def home_power(self, goblin, dialogue_box):
         self.player.enemies_deaths = 0
         self.enemies_spawned = 0
-        self.player.hp = 5
+        self.player.hp = self.player.total_hp
         
         self.number += 1
         self.enemies += 5
@@ -44,3 +44,22 @@ class Level():
             if ticks % 50 == 0 and self.player.enemies_deaths >= self.enemies:
                 dialogue_box.level_active = False
                 self.home_power(goblin, dialogue_box) 
+                
+                
+    def reset_level(self, goblin, dialogue_box):
+        self.player.enemies_deaths = 0
+        self.enemies_spawned = 0
+        self.player.hp = self.player.total_hp
+        
+        self.enemies = 5
+        self.veloc = 1
+        
+        self.enemies_list.clear()
+        
+        goblin.is_active = True
+        dialogue_box.level_active = False
+        
+        self.player.death = False
+        
+        new_text_dialogue = f'Não foi dessa vez. Quer tentar denovo no level {self.number}?'
+        dialogue_box.set_text(new_text_dialogue, Color.white())

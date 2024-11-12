@@ -9,11 +9,14 @@ class Player(Creature):
         
         self.veloc = veloc
         self.hp = hp
+        self.total_hp = self.hp
         
+        self.total_deaths = 0
         self.death = False
 
         self.right = True
         self.left = False
+        
         
         self.spheres_list = []
         self.enemies_deaths = 0
@@ -73,5 +76,7 @@ class Player(Creature):
                 
            
     def check_hp(self):
-        if self.hp <= 0 or self.death == True:
+        if self.hp <= 0:
+            self.total_deaths += 1
             self.death = True
+            print(f'D: {self.total_deaths}')

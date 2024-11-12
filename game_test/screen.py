@@ -47,7 +47,7 @@ class Screen:
         
         if enemy_type == 'goblin':
             
-            enemies.append(Goblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 1, '.\game_test\sprites\goblin.png'))
+            enemies.append(Goblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 1))
             
         elif enemy_type == 'hobgoblin':
             
