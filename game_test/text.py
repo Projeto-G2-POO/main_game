@@ -7,27 +7,19 @@ class Text:
         self.location = location
         self.number = number
 
-        if text_type == 'player_hp':
-            self.player_life()
-        elif text_type == 'player_deaths':
-            self.player_death()
+        self.text_type = text_type
         
-    
-    def player_life(self):
         self.font = pygame.font.Font(None, 30)
-        self.surface = self.font.render(f'HP: {self.number}', False, Color.white())
+        self.surface = self.font.render(f'TEXT TEMP', False, Color.white())
         
     
-    def player_death(self):
-        self.font = pygame.font.Font(None, 30)
-        self.surface = self.font.render(f'DEATHS: {self.number}', False, Color.white())
-    
-    
-    def update_player_life(self, player_life, screen):
-        self.surface = self.font.render(f'HP: {player_life}', False, Color.white())
-        screen.surface.blit(self.surface, self.location)
+    def text_update(self, text_number, screen):
         
-    
-    def update_player_deaths(self, player_deaths, screen):
-        self.surface = self.font.render(f'DEATHS: {player_deaths}', False, Color.white())
+        if self.text_type == 'player_hp':
+            self.surface = self.font.render(f'HP: {text_number}', False, Color.white())
+        elif self.text_type == 'player_deaths':
+            self.surface = self.font.render(f'DEATHS: {text_number}', False, Color.white())
+        elif self.text_type == 'player_enemies_deaths':
+            self.surface = self.font.render(f'KILLS: {text_number}', False, Color.white())
+        
         screen.surface.blit(self.surface, self.location)

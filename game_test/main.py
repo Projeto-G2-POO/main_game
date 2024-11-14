@@ -61,8 +61,10 @@ screen = Screen()
 # PLAYER OBJECT SET
 p1 = Player(screen, [44, 54], [400, 400], 5, 5)
 
+# TEXT IN SCREEN
 p1_hp_text = Text([30, 30], p1.hp, 'player_hp')
 p1_deaths_text = Text([30, 60], p1.total_deaths, 'player_deaths')
+p1_enemies_deaths = Text([30, 90], p1.enemies_deaths, 'player_enemies_deaths')
 
 # LEVEL OBJECT SET
 l1 = Level(1, 5, 1, p1)
@@ -99,8 +101,9 @@ while run_game:
         
         screen.check_enemies(l1.enemies_list)
       
-    p1_hp_text.update_player_life(p1.hp, screen)   
-    p1_deaths_text.update_player_deaths(p1.total_deaths, screen)
+    p1_hp_text.text_update(p1.hp, screen)   
+    p1_deaths_text.text_update(p1.total_deaths, screen)
+    p1_enemies_deaths.text_update(p1.enemies_deaths, screen)
        
     db_g_allied.show_dialogue(p1, g_allied, events)
     p1.move_player()
