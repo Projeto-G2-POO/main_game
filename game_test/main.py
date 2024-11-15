@@ -48,6 +48,9 @@ def level_seletion():
         
         if l1.number >= 4 and l1.number <= 6:
             l1.power_enemy(db_g_allied, screen, pygame.time.get_ticks(), g_allied, 'hobgoblin')
+            
+        if l1.number >= 7:
+            l1.power_enemy(db_g_allied, screen, pygame.time.get_ticks(), g_allied, 'redcap')
     else:
         l1.reset_level(g_allied, db_g_allied)
     
@@ -67,7 +70,7 @@ p1_deaths_text = Text([30, 60], p1.total_deaths, 'player_deaths')
 p1_enemies_deaths = Text([30, 90], p1.enemies_deaths, 'player_enemies_deaths')
 
 # LEVEL OBJECT SET
-l1 = Level(1, 5, 1, p1)
+l1 = Level(7, 5, 1, p1)
 
 # GOBLIN OBJECT SET
 g_allied = Allied(screen, [44, 54], [400, 100])

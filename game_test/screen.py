@@ -4,6 +4,7 @@ import random
 from datetime import datetime
 
 from goblin import Goblin
+from redcap import Redcap
 from hobgoblin import Hobgoblin
 
 class Screen:
@@ -52,3 +53,7 @@ class Screen:
         elif enemy_type == 'hobgoblin':
             
             enemies.append(Hobgoblin(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 2))
+            
+        elif enemy_type == 'redcap':
+            
+            enemies.append(Redcap(self, [44, 54], [coords_list[0], coords_list[1]], veloc, 2))
