@@ -70,7 +70,7 @@ p1_deaths_text = Text([30, 60], p1.total_deaths, 'player_deaths')
 p1_enemies_deaths = Text([30, 90], p1.enemies_deaths, 'player_enemies_deaths')
 
 # LEVEL OBJECT SET
-l1 = Level(7, 5, 1, p1)
+l1 = Level(1, 5, 1, p1)
 
 # GOBLIN OBJECT SET
 g_allied = Allied(screen, [44, 54], [400, 100])
