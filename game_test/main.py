@@ -9,14 +9,6 @@ from level import Level
 from screen import Screen
 from dialogue_box import DialogueBox
 
-'''
-
-COISAS PARA FAZER:
-
-    - IA PARA OS PERSONAGENS
-    - SISTEMA DE INVENTARIO
-    
-'''
 
 # DRAW OBJECTS IN SCREEN
 def draw_screen():
