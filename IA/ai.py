@@ -1,6 +1,6 @@
 #$response = Invoke-WebRequest -Uri "http://127.0.0.1:8000/" -Method POST -Headers @{
->>#     "Content-Type" = "application/json"
->> #} -Body '{"text": "answer accordingly: imagine you are on a medieval world, in a grass field, 
+#>>     "Content-Type" = "application/json"
+#>> } -Body '{"text": "answer accordingly: imagine you are on a medieval world, in a grass field, 
 #you are a traveler venturing from afar, answer propperly: imagine you are a goblin standing by my side, 
 #give a warm welcome to the  traveller. remember, we are in a open gras field, with monsters arriving soon."}'
 
